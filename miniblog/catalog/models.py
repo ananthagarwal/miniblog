@@ -16,7 +16,7 @@ class Blog(models.Model):
         """
         String for representing Model object.
         """
-        return self.title
+        return self.title 
 
     def get_absolute_url(self):
         """
