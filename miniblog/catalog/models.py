@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -16,7 +17,7 @@ class Blog(models.Model):
         """
         String for representing Model object.
         """
-        return self.title 
+        return self.title
 
     def get_absolute_url(self):
         """
@@ -34,25 +35,30 @@ class Comment(models.Model):
     description = models.TextField(max_length=1000, help_text="Write your comment here")
     comment_author = models.ForeignKey('BlogAuthor', on_delete=models.SET_NULL, null=True)
 
+    class Meta:
+        ordering = ["comment_date"]
+
+
     def __str__(self):
         """
         String for representing Model object.
         """
-        return self.comment_date + self.description
+        return self.description[:25] + " ..."
+
 
 
 class BlogAuthor(models.Model):
     """
     Model representing a Blog Author
     """
-    name = models.CharField(max_length=200)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     bio = models.TextField(max_length=1000, help_text="Enter your bio here")
 
     def __str__(self):
         """
         String for representing Model object.
         """
-        return self.name
+        return self.user.get_username()
 
     def get_absolute_url(self):
         """
