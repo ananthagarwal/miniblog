@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
 class Blog(models.Model):
     """
     Model representing a Blog.
@@ -46,7 +47,6 @@ class Comment(models.Model):
         return self.description[:25] + " ..."
 
 
-
 class BlogAuthor(models.Model):
     """
     Model representing a Blog Author
@@ -58,7 +58,7 @@ class BlogAuthor(models.Model):
         """
         String for representing Model object.
         """
-        return self.user.get_username()
+        return self.user.__str__()
 
     def get_absolute_url(self):
         """
