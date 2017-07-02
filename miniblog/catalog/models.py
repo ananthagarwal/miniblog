@@ -64,4 +64,4 @@ class BlogAuthor(models.Model):
         """
         Returns the url to access a particular BlogAuthor instance.
         """
-        return reverse('blogauthor-detail', args=[str(self.id)])
+        return reverse('blog-author-detail', args=[str(self.id)])
