@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>My blogs</h1>
+
+    {% if myblog_list %}
+    <ul>
+
+      {% for blog in myblog_list %}
+      <li>
+        <a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a> ({{blog.date}}) - <a href="{% url 'blog-author-detail' blog.author.pk %}">{{blog.author}}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>You have no blogs!</p>
+      <p>Click <a href="{% url 'new-blog' %}">here</a> to create a new blog post</p>
+    {% endif %}       
+{% endblock %}

@@ -29,6 +29,7 @@ class BlogListView(generic.ListView):
     template_name = 'blog_list.html'
     paginate_by = 5
 
+
 class BlogDetailView(generic.DetailView):
     model = Blog
     context_object_name = 'blog_detail'
@@ -41,6 +42,13 @@ class BlogAuthorListView(generic.ListView):
 class BlogAuthorDetailView(generic.DetailView):
     model = BlogAuthor
     context_object_name = 'blog_author_detail'
+
+@login_required
+def my_blogs(request):
+    blog_author = BlogAuthor.objects.get(user = request.user)
+    mine = Blog.objects.filter(author = blog_author)
+    return render(request, 'catalog/myblog_list.html', context={'myblog_list': mine })
+
 
 @login_required
 def add_comment(request, pk):

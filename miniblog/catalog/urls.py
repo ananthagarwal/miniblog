@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^blogauthor/$', views.BlogAuthorListView.as_view(), name='blogauthors'),
     url(r'^blogauthors/(?P<pk>\d+)$', views.BlogAuthorDetailView.as_view(), name='blog-author-detail'),
     url(r'^blog/newblog/$', views.new_blog, name='new-blog'),
+    url(r'^blog/myblogs/$', views.my_blogs, name='my-blogs'),
 
 ]
 

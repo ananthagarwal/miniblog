@@ -27,6 +27,7 @@
           <li><a href="{% url 'blogauthors' %}">All bloggers</a></li>
           {% if user.is_authenticated %}
           <li>User: {{ user.get_username }}</li>
+          <li><a href="{% url 'my-blogs'%}?next={{request.path}}">My Blogs</a></li>
           <li><a href="{% url 'new-blog'%}?next={{request.path}}">New Blog Post</a></li>
           <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
 
