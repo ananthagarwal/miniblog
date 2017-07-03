@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>New blog</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+        {{ form }}
+        </table>
+
+        <input type="submit" value="Post" />
+    </form>
+
+
+
+
+{% endblock %}
